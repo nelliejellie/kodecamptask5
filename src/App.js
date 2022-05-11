@@ -1,16 +1,27 @@
 import './App.css';
-import Navbar from './Components/Navbar';
-import Staffs from './Components/Staffs';
 import {useState} from 'react'
+import { HashRouter as Router, Routes,Route } from "react-router-dom";
+import Home from './views/Home';
+import About from './views/About';
+import Contact from './views/Contact';
+import Details from './views/Details';
+import "./db.json"
 
 
-function App({allStaffs}) {
+function App() {
+  const staffs = require("./db.json")
+  const allStaffs = staffs.staffs
   
   return (
     <div className="">
-      <Navbar/>
-      <h2 className='text-3xl font-bold text-center m-8 text-teal-500'>Staff Management App</h2>
-      <Staffs staffs={allStaffs}/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home allStaffs={allStaffs}/>}/>
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/details/:id" element={<Details allStaffs={allStaffs}/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }

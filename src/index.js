@@ -2,26 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { BrowserRouter, Routes,Route } from "react-router-dom";
-import About from './views/About';
-import Contact from './views/Contact';
-import Details from './views/Details';
-import "./db.json"
 
-const staffs = require("./db.json")
-const allStaffs = staffs.staffs
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App allStaffs={allStaffs}/>}/>
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/details/:id" element={<Details allStaffs={allStaffs}/>} />
-    </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 
